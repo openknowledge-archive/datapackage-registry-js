@@ -1,4 +1,4 @@
-var Promise = require('promise-polyfill');
+var Promise = require('bluebird');
 var request = require('superagent');
 var csv = require('csv');
 

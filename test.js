@@ -1,7 +1,7 @@
 var _ = require('underscore');
 var request = require('superagent');
 var assert = require('chai').assert;
-var Promise = require('promise-polyfill');
+var Promise = require('bluebird');
 var registry = require('../datapackage-registry');
 var should = require('chai').should();
 
