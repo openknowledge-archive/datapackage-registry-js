@@ -1,6 +1,7 @@
+var _ = require('underscore');
+var csv = require('csv');
 var Promise = require('bluebird');
 var request = require('superagent');
-var csv = require('csv');
 
 var config = {
   backend: 'https://rawgit.com/dataprotocols/registry/master/registry.csv',
@@ -37,13 +38,17 @@ function getCSVEndpoint(endpoint, objectwise) {
 }
 
 
-function getRegistry() {
+function getRegistry(userConfig) {
 
   /**
    * Return the DataPackage Registry as an array of objects
    */
+  
+  // Replace default params with user config
+  var customConfig = _.extend(config, userConfig);
 
-  return getCSVEndpoint(config.backend, config.objectwise);
+
+  return getCSVEndpoint(customConfig.backend, customConfig.objectwise);
 
 }
 

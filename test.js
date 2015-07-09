@@ -2,7 +2,7 @@ var _ = require('underscore');
 var request = require('superagent');
 var assert = require('chai').assert;
 var Promise = require('bluebird');
-var registry = require('../datapackage-registry');
+var registry = require('./');
 var should = require('chai').should();
 
 

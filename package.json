@@ -1,18 +1,50 @@
 {
-	"name": "datapackage-registry-js",
-	"version": "0.1.0",
-	"description": "",
-	"main": "index.js",
-	"dependencies": {
-		"bluebird": "^2.9.30",
-		"csv": "^0.4.1",
-		"superagent": "^1.2.0"
-	},
-	"devDependencies": {
-	},
-	"scripts": {
-		"test": "mocha ./"
-	},
-	"author": "Open Knowledge",
-	"license": "MIT"
+  "name": "datapackage-registry",
+  "version": "0.1.0",
+  "description": "An API wrapper for a Data Package registry.",
+  "keywords": ["data package", "frictionless data", "open data", "open knowledge"],
+  "main": "index.js",
+  "dependencies": {
+    "csv": "^0.4.1",
+    "promise-polyfill": "^2.0.2",
+    "superagent": "^1.2.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "mocha": "^2.2.5",
+    "superagent-mock": "^1.2.0"
+  },
+  "scripts": {
+    "test": "mocha ./"
+  },
+  "author": {
+    "name": "Open Knowledge",
+    "email": "info@okfn.org",
+    "url": "https://okfn.org/"
+  },
+  "contributors": [
+    {
+      "name": "Paul Walsh",
+      "email": "paulywalsh@gmail.com",
+      "url": "http://pwalsh.me/"
+    },
+    {
+      "name": "Artem Rudenko",
+      "email": "gvidon@ottofeller.com",
+      "url": "http://ottofeller.com/"
+    },
+    {
+      "name": "Alexey Kislyakov",
+      "email": "alexey@creony.com",
+      "url": "http://ottofeller.com/"
+    }
+  ],
+  "homepage": "https://github.com/okfn/datapackage-registry-js",
+  "bugs": "https://github.com/okfn/datapackage-registry-js/issues",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/okfn/datapackage-registry-js.git"
+  },
+  "license": "MIT"
 }
