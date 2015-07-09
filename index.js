@@ -1,7 +1,7 @@
 var _ = require('underscore');
-var Promise = require('promise-polyfill');
-var request = require('superagent');
 var csv = require('csv');
+var Promise = require('bluebird');
+var request = require('superagent');
 
 var config = {
   backend: 'https://rawgit.com/dataprotocols/registry/master/registry.csv',
