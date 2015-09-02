@@ -2,21 +2,30 @@
   "name": "datapackage-registry",
   "version": "0.1.0",
   "description": "An API wrapper for a Data Package registry.",
-  "keywords": ["data package", "frictionless data", "open data", "open knowledge"],
+  "keywords": [
+    "data package",
+    "frictionless data",
+    "open data",
+    "open knowledge"
+  ],
   "main": "index.js",
   "dependencies": {
     "csv": "^0.4.1",
-    "promise-polyfill": "^2.0.2",
     "superagent": "^1.2.0",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "bluebird": "~2.9.34"
   },
   "devDependencies": {
     "chai": "^3.0.0",
     "mocha": "^2.2.5",
-    "superagent-mock": "^1.2.0"
+    "superagent-mock": "^1.2.0",
+    "istanbul": "~0.3.19",
+    "coveralls": "~2.11.4"
   },
   "scripts": {
-    "test": "mocha ./"
+    "test": "mocha ./",
+    "coverage": "istanbul cover _mocha -- -R spec .",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "author": {
     "name": "Open Knowledge",
@@ -42,9 +51,9 @@
   ],
   "homepage": "https://github.com/okfn/datapackage-registry-js",
   "bugs": "https://github.com/okfn/datapackage-registry-js/issues",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/okfn/datapackage-registry-js.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okfn/datapackage-registry-js.git"
   },
   "license": "MIT"
 }
