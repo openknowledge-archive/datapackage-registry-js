@@ -19,11 +19,13 @@
     "chai": "^3.0.0",
     "mocha": "^2.2.5",
     "superagent-mock": "^1.2.0",
-    "istanbul": "~0.3.19"
+    "istanbul": "~0.3.19",
+    "coveralls": "~2.11.4"
   },
   "scripts": {
     "test": "mocha ./",
-    "coverage": "istanbul cover _mocha -- -R spec ."
+    "coverage": "istanbul cover _mocha -- -R spec .",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "author": {
     "name": "Open Knowledge",

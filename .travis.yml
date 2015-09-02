@@ -5,6 +5,7 @@ node_js:
   - '0.10'
 install: npm install
 script: npm run coverage
+after_script: npm run coveralls
 branches:
   only:
     - master
