@@ -18,10 +18,12 @@
   "devDependencies": {
     "chai": "^3.0.0",
     "mocha": "^2.2.5",
-    "superagent-mock": "^1.2.0"
+    "superagent-mock": "^1.2.0",
+    "istanbul": "~0.3.19"
   },
   "scripts": {
-    "test": "mocha ./"
+    "test": "mocha ./",
+    "coverage": "istanbul cover _mocha -- -R spec ."
   },
   "author": {
     "name": "Open Knowledge",
