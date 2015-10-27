@@ -1,6 +1,6 @@
 {
   "name": "datapackage-registry",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An API wrapper for a Data Package registry.",
   "keywords": [
     "data package",
@@ -11,15 +11,16 @@
   "main": "index.js",
   "dependencies": {
     "csv": "^0.4.1",
-    "superagent": "^1.2.0",
-    "underscore": "^1.8.3",
-    "bluebird": "~2.9.34"
+    "bluebird": "~2.9.34",
+    "es6-promise": "^3.0.2",
+    "isomorphic-fetch": "^2.2.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "chai": "^3.0.0",
     "mocha": "^2.2.5",
-    "superagent-mock": "^1.2.0",
     "istanbul": "~0.3.19",
+    "fetch-mock": "^2.2.3",
     "coveralls": "~2.11.4"
   },
   "scripts": {
