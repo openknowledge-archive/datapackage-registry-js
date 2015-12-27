@@ -5,14 +5,13 @@ var Promise = require('bluebird');
 var registry = require('./');
 var should = require('chai').should();
 
-
-describe('Data Package Registry', function(){
+describe('Data Package Registry', function() {
   var config = {
-    backend: 'https://rawgit.com/dataprotocols/registry/master/registry.csv',
+    backend: 'http://schemas.datapackages.org/registry.csv',
   };
 
-  describe('get()', function(){
-    it('return Promise object', function(done, err){
+  describe('get()', function() {
+    it('return Promise object', function(done, err) {
       if (err) done(err);
       fetchMock.restore();
       fetchMock.mock(config.backend, 'id,title,schema,specification');
@@ -22,7 +21,7 @@ describe('Data Package Registry', function(){
       done();
     });
 
-    it('resolve into non-empty array of objects when registry is not empty', function(done, err){
+    it('resolve into non-empty array of objects when registry is not empty', function(done, err) {
       if (err) done(err);
 
       fetchMock.restore();
@@ -34,7 +33,7 @@ describe('Data Package Registry', function(){
       });
     });
 
-    it('resolve into empty array when registry is empty', function(done, err){
+    it('resolve into empty array when registry is empty', function(done, err) {
       if (err) done(err);
 
       fetchMock.restore();
@@ -46,7 +45,7 @@ describe('Data Package Registry', function(){
       });
     });
 
-    it('reject with a message when connection failed', function(done, err){
+    it('reject with a message when connection failed', function(done, err) {
       if (err) done(err);
 
       fetchMock.restore();

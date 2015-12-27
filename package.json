@@ -1,6 +1,6 @@
 {
   "name": "datapackage-registry",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "An API wrapper for a Data Package registry.",
   "keywords": [
     "data package",
@@ -24,7 +24,7 @@
     "coveralls": "~2.11.4"
   },
   "scripts": {
-    "test": "mocha ./",
+    "test": "mocha --timeout 5000 ./",
     "coverage": "istanbul cover _mocha -- -R spec .",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
