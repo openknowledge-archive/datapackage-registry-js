@@ -4,46 +4,30 @@ import csv from 'csv';
 import Promise from 'bluebird';
 import 'isomorphic-fetch';
 
-const CONFIG = {
-  backend: 'http://schemas.datapackages.org/registry.csv',
-  objectwise: true,
-};
+const DEFAULT_REGISTRY_URL = 'http://schemas.datapackages.org/registry.csv';
 
-function getCSVEndpoint(endpoint, objectwise) {
-  /**
-   * Return data from an endpoint that is parsable as CSV
-   */
+class Registry {
+  constructor(url=DEFAULT_REGISTRY_URL) {
+    this.url = url;
+  }
 
-  return new Promise(function(resolve, reject) {
-    fetch(endpoint).
-        then(function(response) {
-          if (response.status != 200) {
-            reject('Bad response from server');
-          }
+  get() {
+    return fetch(this.url)
+             .then((response) => {
+               if (response.status != 200) {
+                 throw new Error('Bad response from server');
+               }
 
-          return response.text();
-        }).then((text) => {
-          csv.parse(text, {columns: objectwise}, (error, output) => {
-            if (error) {
-              reject('Failed to parse registry file: ' + error);
-            }
+               return response.text();
+             })
+             .then((text, err) => {
+               if (err) {
+                 throw err;
+               }
 
-            resolve(output);
-          });
-        });
-  });
+               return Promise.promisify(csv.parse)(text, {columns: true});
+             });
+  }
 }
 
-function getRegistry(userConfig) {
-  /**
-   * Return the DataPackage Registry as an array of objects
-   */
-
-  // Replace default params with user config
-  var customConfig = _.extend(CONFIG, userConfig);
-  return getCSVEndpoint(customConfig.backend, customConfig.objectwise);
-}
-
-export default {
-  get: getRegistry,
-};
+export default Registry;

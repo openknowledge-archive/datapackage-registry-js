@@ -1,6 +1,5 @@
 import fetchMock from 'fetch-mock';
-import Promise from 'bluebird';
-import registry from '..';
+import Registry from '..';
 import chai from 'chai';
 chai.should()
 
@@ -15,7 +14,7 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification');
 
-      registry.get().should.be.an.instanceOf(Promise);
+      (new Registry()).get().then.should.be.not.undefined;
 
       done();
     });
@@ -26,7 +25,7 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification\n1,2,3,4');
 
-      registry.get().then((data) => {
+      (new Registry()).get().then((data) => {
         data.should.be.not.empty;
         done();
       });
@@ -38,20 +37,19 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification');
 
-      registry.get().then((data) => {
+      (new Registry()).get().then((data) => {
         data.should.be.empty;
         done();
       });
     });
 
-    it('reject with a message when connection failed', (done, err) => {
+    it('reject when connection fails', (done, err) => {
       if (err) done(err);
 
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 500);
 
-      registry.get().catch((error) => {
-        error.should.be.a('string');
+      (new Registry()).get().catch((error) => {
         done();
       });
     });
