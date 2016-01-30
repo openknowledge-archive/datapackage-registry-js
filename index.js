@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import _ from 'underscore';
 import csv from 'csv';
 import Promise from 'bluebird';
