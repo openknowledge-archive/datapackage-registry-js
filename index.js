@@ -1,10 +1,11 @@
-var _ = require('underscore');
-var csv = require('csv');
-var Promise = require('bluebird');
+import _ from 'underscore';
+import csv from 'csv';
+import Promise from 'bluebird';
+
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
-var config = {
+const CONFIG = {
   backend: 'http://schemas.datapackages.org/registry.csv',
   objectwise: true,
 };
@@ -22,8 +23,8 @@ function getCSVEndpoint(endpoint, objectwise) {
           }
 
           return response.text();
-        }).then(function(text) {
-          csv.parse(text, {columns: objectwise}, function(error, output) {
+        }).then((text) => {
+          csv.parse(text, {columns: objectwise}, (error, output) => {
             if (error) {
               reject('Failed to parse registry file: ' + error);
             }
@@ -40,10 +41,10 @@ function getRegistry(userConfig) {
    */
 
   // Replace default params with user config
-  var customConfig = _.extend(config, userConfig);
+  var customConfig = _.extend(CONFIG, userConfig);
   return getCSVEndpoint(customConfig.backend, customConfig.objectwise);
 }
 
-module.exports = {
+export default {
   get: getRegistry,
 };
