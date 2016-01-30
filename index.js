@@ -2,9 +2,7 @@ import 'babel-polyfill';
 import _ from 'underscore';
 import csv from 'csv';
 import Promise from 'bluebird';
-
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
+import 'isomorphic-fetch';
 
 const CONFIG = {
   backend: 'http://schemas.datapackages.org/registry.csv',
