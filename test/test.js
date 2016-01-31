@@ -1,7 +1,7 @@
 import fetchMock from 'fetch-mock';
 import Registry from '..';
 import chai from 'chai';
-chai.should()
+chai.should();
 
 describe('Data Package Registry', () => {
   const CONFIG = {
@@ -13,7 +13,7 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification');
 
-      let registry = new Registry(CONFIG.backend);
+      const registry = new Registry(CONFIG.backend);
 
       registry.get().then.should.be.not.undefined;
     });
@@ -24,7 +24,7 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification\n1,2,3,4');
 
-      let registry = new Registry(CONFIG.backend);
+      const registry = new Registry(CONFIG.backend);
 
       registry.get().then((data) => {
         data.should.be.not.empty;
@@ -38,7 +38,7 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification');
 
-      let registry = new Registry(CONFIG.backend);
+      const registry = new Registry(CONFIG.backend);
 
       registry.get().then((data) => {
         data.should.be.empty;
@@ -52,9 +52,9 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 500);
 
-      let registry = new Registry(CONFIG.backend);
+      const registry = new Registry(CONFIG.backend);
 
-      registry.get().catch((error) => {
+      registry.get().catch(() => {
         done();
       });
     });
@@ -65,15 +65,15 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification\n1,2,3,4');
 
-      let registry = new Registry(CONFIG.backend);
+      const registry = new Registry(CONFIG.backend);
 
       registry.get().then(() => {
         fetchMock.restore();
         fetchMock.mock(CONFIG.backend, 500);
 
-        registry.get().then((data) => {
+        registry.get().then(() => {
           done();
-        })
+        });
       });
     });
   });
