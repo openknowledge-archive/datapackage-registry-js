@@ -8,7 +8,7 @@
     "open data",
     "open knowledge"
   ],
-  "main": "index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "csv": "^0.4.1",
     "bluebird": "~2.9.34",
