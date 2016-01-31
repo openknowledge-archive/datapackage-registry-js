@@ -8,25 +8,33 @@ const DEFAULT_REGISTRY_URL = 'http://schemas.datapackages.org/registry.csv';
 
 class Registry {
   constructor(url=DEFAULT_REGISTRY_URL) {
-    this.url = url;
+    this._url = url;
   }
 
   get() {
-    return fetch(this.url)
-             .then((response) => {
-               if (response.status != 200) {
-                 throw new Error('Bad response from server');
-               }
+    return this._get_registry();
+  }
 
-               return response.text();
-             })
-             .then((text, err) => {
-               if (err) {
-                 throw err;
-               }
+  _get_registry() {
+    if (this._registry) return this._registry;
 
-               return Promise.promisify(csv.parse)(text, {columns: true});
-             });
+    this._registry = fetch(this._url)
+                       .then((response) => {
+                         if (response.status != 200) {
+                           throw new Error('Bad response from server');
+                         }
+
+                         return response.text();
+                       })
+                       .then((text, err) => {
+                         if (err) {
+                           throw err;
+                         }
+
+                         return Promise.promisify(csv.parse)(text, {columns: true});
+                       });
+
+    return this._registry;
   }
 }
 

@@ -53,5 +53,23 @@ describe('Data Package Registry', () => {
         done();
       });
     });
+
+    it('caches the registry after the first load', (done, err) => {
+      if (err) done(err);
+
+      fetchMock.restore();
+      fetchMock.mock(CONFIG.backend, 'id,title,schema,specification\n1,2,3,4');
+
+      let registry = new Registry();
+
+      registry.get().then(() => {
+        fetchMock.restore();
+        fetchMock.mock(CONFIG.backend, 500);
+
+        registry.get().then((data) => {
+          done();
+        })
+      });
+    });
   });
 });
