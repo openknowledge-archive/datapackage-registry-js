@@ -9,14 +9,13 @@ describe('Data Package Registry', () => {
   };
 
   describe('get()', () => {
-    it('return Promise object', (done, err) => {
-      if (err) done(err);
+    it('return Promise object', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification');
 
-      (new Registry()).get().then.should.be.not.undefined;
+      let registry = new Registry(CONFIG.backend);
 
-      done();
+      registry.get().then.should.be.not.undefined;
     });
 
     it('resolve into non-empty array of objects when registry is not empty', (done, err) => {
@@ -25,7 +24,9 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification\n1,2,3,4');
 
-      (new Registry()).get().then((data) => {
+      let registry = new Registry(CONFIG.backend);
+
+      registry.get().then((data) => {
         data.should.be.not.empty;
         done();
       });
@@ -37,7 +38,9 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification');
 
-      (new Registry()).get().then((data) => {
+      let registry = new Registry(CONFIG.backend);
+
+      registry.get().then((data) => {
         data.should.be.empty;
         done();
       });
@@ -49,7 +52,9 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 500);
 
-      (new Registry()).get().catch((error) => {
+      let registry = new Registry(CONFIG.backend);
+
+      registry.get().catch((error) => {
         done();
       });
     });
@@ -60,7 +65,7 @@ describe('Data Package Registry', () => {
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification\n1,2,3,4');
 
-      let registry = new Registry();
+      let registry = new Registry(CONFIG.backend);
 
       registry.get().then(() => {
         fetchMock.restore();
