@@ -9,13 +9,15 @@ describe('Data Package Registry', () => {
   };
 
   describe('get()', () => {
-    it('return Promise object', () => {
+    it('return Promise object', (done, err) => {
+      if (err) done(err);
       fetchMock.restore();
       fetchMock.mock(CONFIG.backend, 'id,title,schema,specification');
 
       const registry = new Registry(CONFIG.backend);
-
       registry.get().then.should.be.not.undefined;
+
+      done();
     });
 
     it('resolve into non-empty array of objects when registry is not empty', (done, err) => {

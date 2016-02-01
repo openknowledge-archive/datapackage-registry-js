@@ -35,8 +35,7 @@ module.exports = function(config) {
 
 
     browserify: {
-      debug: true,
-      transform: ['brfs-babel', 'babelify']
+      transform: ['babelify']
     },
 
 
