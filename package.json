@@ -46,7 +46,7 @@
     "test:browser": "karma start",
     "test:nodejs": "mocha",
     "lint": "eslint lib/*.js lib/**/*.js test/*.js test/**/*.js",
-    "coverage": "babel-node ./node_modules/.bin/babel-istanbul cover _mocha ./test/*",
+    "coverage": "babel-node ./node_modules/.bin/babel-istanbul cover _mocha",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "author": {
