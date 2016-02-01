@@ -24,7 +24,7 @@ describe('#readFileOrUrl()', () => {
     });
   });
 
-  if (!isBrowser()) {
+  if (!isBrowser) {
     // We only read files when in NodeJS
 
     describe('file', () => {
