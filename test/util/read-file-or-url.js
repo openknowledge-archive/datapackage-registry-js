@@ -26,9 +26,7 @@ describe('#readFileOrUrl()', () => {
     it('should throw an error if unable to get the URL', (done) => {
       fetchMock.mock(URL, 500);
 
-      readFileOrURL(URL).then(() => {
-        // do nothing
-      }).catch(() => {
+      readFileOrURL(URL).catch(() => {
         done();
       });
     });
@@ -51,9 +49,7 @@ describe('#readFileOrUrl()', () => {
       it('should throw an error if unable to read the file', (done) => {
         const inexistentPath = 'this-file-shouldnt-exist';
 
-        readFileOrURL(inexistentPath).then(() => {
-          // do nothing
-        }).catch(() => {
+        readFileOrURL(inexistentPath).catch(() => {
           done();
         });
       });
