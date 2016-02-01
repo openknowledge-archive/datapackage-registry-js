@@ -1,8 +1,8 @@
+import path from 'path';
 import readFileOrURL from '../../lib/util/read-file-or-url';
 import isBrowser from '../../lib/util/is-browser';
-import path from 'path';
 
-describe('#readFileOrUrl()', () => {
+describe('#readFileOrUrl', () => {
   describe('url', () => {
     const URL = 'http://okfn.org';
     const DATA = 'foo';

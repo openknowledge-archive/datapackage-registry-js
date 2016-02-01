@@ -5,3 +5,4 @@ rules:
   no-unused-expressions: 0
 globals:
   fetchMock: false
+  fixturePath: false
