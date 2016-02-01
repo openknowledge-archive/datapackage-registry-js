@@ -26,6 +26,7 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "chai": "^3.0.0",
+    "chai-as-promised": "^5.2.0",
     "coveralls": "~2.11.4",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^4.0.0",
@@ -43,8 +44,8 @@
   "scripts": {
     "test": "npm run lint; npm run test:nodejs; npm run test:browser",
     "test:browser": "karma start",
-    "test:nodejs": "mocha --compilers js:babel-register --timeout 5000 ./test/*",
-    "lint": "eslint lib/**/*.js test/**/*.js",
+    "test:nodejs": "mocha",
+    "lint": "eslint lib/*.js lib/**/*.js test/*.js test/**/*.js",
     "coverage": "babel-node ./node_modules/.bin/babel-istanbul cover _mocha ./test/*",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },

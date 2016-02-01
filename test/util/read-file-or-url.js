@@ -1,9 +1,6 @@
 import readFileOrURL from '../../lib/util/read-file-or-url';
 import isBrowser from '../../lib/util/is-browser';
-import fetchMock from 'fetch-mock';
 import path from 'path';
-import chai from 'chai';
-chai.should();
 
 describe('#readFileOrUrl()', () => {
   describe('url', () => {
@@ -14,21 +11,16 @@ describe('#readFileOrUrl()', () => {
       fetchMock.restore();
     });
 
-    it('should return the data', (done) => {
+    it('should return the data', () => {
       fetchMock.mock(URL, DATA);
 
-      readFileOrURL(URL).then((data) => {
-        data.should.equal(DATA);
-        done();
-      });
+      return readFileOrURL(URL).should.eventually.equal(DATA);
     });
 
-    it('should throw an error if unable to get the URL', (done) => {
+    it('should throw an error if unable to get the URL', () => {
       fetchMock.mock(URL, 500);
 
-      readFileOrURL(URL).catch(() => {
-        done();
-      });
+      return readFileOrURL(URL).should.eventually.be.rejected;
     });
   });
 
@@ -39,19 +31,11 @@ describe('#readFileOrUrl()', () => {
       const PATH = path.join(__dirname, '..', 'fixtures', 'foo.txt');
       const DATA = 'foo\n';
 
-      it('should return the data', (done) => {
-        readFileOrURL(PATH).then((data) => {
-          data.should.equal(DATA);
-          done();
-        });
-      });
+      it('should return the data', () => readFileOrURL(PATH).should.eventually.equal(DATA));
 
-      it('should throw an error if unable to read the file', (done) => {
+      it('should throw an error if unable to read the file', () => {
         const inexistentPath = 'this-file-shouldnt-exist';
-
-        readFileOrURL(inexistentPath).catch(() => {
-          done();
-        });
+        return readFileOrURL(inexistentPath).should.eventually.be.rejected;
       });
     });
   }
