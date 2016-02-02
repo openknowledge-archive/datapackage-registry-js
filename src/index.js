@@ -7,7 +7,7 @@ import isBrowser from './util/is-browser';
 import isRemoteURL from './util/is-remote-url';
 
 const DEFAULT_REGISTRY_PATH = (isBrowser) ? 'http://schemas.datapackages.org/registry.csv' :
-                                            path.join(__dirname, 'schemas', 'registry.csv');
+                                            path.join(__dirname, '..', 'schemas', 'registry.csv');
 
 class Registry {
   constructor(pathOrURL = DEFAULT_REGISTRY_PATH) {
