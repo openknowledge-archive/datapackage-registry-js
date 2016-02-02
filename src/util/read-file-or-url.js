@@ -1,6 +1,5 @@
 import isRemoteURL from './is-remote-url';
 import isBrowser from './is-browser';
-import Promise from 'bluebird';
 import 'isomorphic-fetch';
 
 let fs;
@@ -21,7 +20,15 @@ function _readURL(_url) {
 
 function _readFile(path) {
   // WARN: This only works on NodeJS
-  return Promise.promisify(fs.readFile)(path, 'utf8');
+  return new Promise((resolve, reject) => {
+    fs.readFile(path, 'utf8', (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
 }
 
 function readFileOrURL(pathOrURL) {

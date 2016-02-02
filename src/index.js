@@ -1,6 +1,5 @@
 import 'babel-polyfill';
 import csv from 'csv';
-import Promise from 'bluebird';
 import path from 'path';
 import readFileOrURL from './util/read-file-or-url';
 import isBrowser from './util/is-browser';
@@ -8,6 +7,18 @@ import isRemoteURL from './util/is-remote-url';
 
 const DEFAULT_REGISTRY_PATH = (isBrowser) ? 'http://schemas.datapackages.org/registry.csv' :
                                             path.join(__dirname, '..', 'schemas', 'registry.csv');
+
+function _csvParse(text) {
+  return new Promise((resolve, reject) => {
+    csv.parse(text, { columns: true }, (err, output) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(output);
+      }
+    });
+  });
+}
 
 class Registry {
   constructor(pathOrURL = DEFAULT_REGISTRY_PATH) {
@@ -31,7 +42,7 @@ class Registry {
 
   _loadRegistry(pathOrURL) {
     return readFileOrURL(pathOrURL)
-             .then((text) => Promise.promisify(csv.parse)(text, { columns: true }))
+             .then((text) => _csvParse(text))
              .then((registry) => this._groupProfilesById(registry));
   }
 
