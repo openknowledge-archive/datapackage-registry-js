@@ -3,3 +3,6 @@ src/
 
 # Coverage directory used by tools like istanbul
 coverage/
+
+# Compiled files for the browser
+dist/
