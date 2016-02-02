@@ -1,5 +1,5 @@
 import 'babel-polyfill';
-import csv from 'csv';
+import parse from 'csv-parse';
 import path from 'path';
 import readFileOrURL from './util/read-file-or-url';
 import isBrowser from './util/is-browser';
@@ -10,7 +10,7 @@ const DEFAULT_REGISTRY_PATH = (isBrowser) ? 'http://schemas.datapackages.org/reg
 
 function _csvParse(text) {
   return new Promise((resolve, reject) => {
-    csv.parse(text, { columns: true }, (err, output) => {
+    parse(text, { columns: true }, (err, output) => {
       if (err) {
         reject(err);
       } else {

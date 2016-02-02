@@ -10,7 +10,7 @@
   ],
   "main": "lib/index.js",
   "dependencies": {
-    "csv": "^0.4.1",
+    "csv-parse": "^1.0.1",
     "es6-promise": "^3.0.2",
     "isomorphic-fetch": "^2.2.0",
     "underscore": "^1.8.3"
