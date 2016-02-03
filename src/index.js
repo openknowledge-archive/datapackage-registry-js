@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import parse from 'csv-parse';
 import path from 'path';
 import readFileOrURL from './util/read-file-or-url';

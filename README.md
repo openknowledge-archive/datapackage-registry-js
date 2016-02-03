@@ -51,6 +51,13 @@ registry.get('base')
         });
 ```
 
+### Browser support
+
+This package requires ES6's `Promise`. If you need to support a browser that
+doesn't have it built-in (check in http://caniuse.com/#feat=promises), you have
+to use a polyfill like
+[es6-promise](https://github.com/jakearchibald/es6-promise).
+
 ## Developer notes
 
 These notes are intended to help people that want to contribute to this
