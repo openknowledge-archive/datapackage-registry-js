@@ -9,15 +9,46 @@ es6-promise
 ## Usage
 
 ```javascript
-var registry = require('datapackage-registry')('http://schemas.datapackages.org/registry.csv')
+var Registry = require('datapackage-registry');
 
-registry.get('base')
-        .then(function (schema) {
-          // use schema
+// Without parameters, this will use the default registry (http://schemas.datapackages.org/registry.csv)
+// When using in NodeJS, this registry is locally cached, so no HTTP requests will de done.
+var registry = new Registry();
+
+// See the list of profiles available in the registry
+registry.getProfiles()
+        .then(function (profiles) {
+          console.log(profiles);
+          // {
+          //   base:
+          //    { id: 'base',
+          //      title: 'Data Package',
+          //      schema: 'http://schemas.datapackages.org/data-package.json',
+          //      schema_path: 'data-package.json',
+          //      specification: 'http://dataprotocols.org/data-packages' },
+          //   tabular:
+          //    { id: 'tabular',
+          //      title: 'Tabular Data Package',
+          //      schema: 'http://schemas.datapackages.org/tabular-data-package.json',
+          //      schema_path: 'tabular-data-package.json',
+          //      specification: 'http://dataprotocols.org/tabular-data-package/' },
+          //   fiscal:
+          //    { id: 'fiscal',
+          //      title: 'Fiscal Data Package',
+          //      schema: 'http://schemas.datapackages.org/fiscal-data-package.json',
+          //      schema_path: 'fiscal-data-package.json',
+          //      specification: 'http://fiscal.dataprotocols.org/spec/' }
+          // }
         });
+
+// Get a profile
+registry.get('base')
+        .then(function (profile) {
+          // use profile
+        })
         .catch(function (err) {
           // deal with error
-        }
+        });
 ```
 
 ## Developer notes

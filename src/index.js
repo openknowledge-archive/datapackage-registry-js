@@ -27,14 +27,17 @@ class Registry {
   }
 
   getProfiles() {
+    // Returns the available profiles' metadata.
     return this._registry;
   }
 
   getBasePath() {
+    // If there's a Registry cache, returns its absolute base path
     return this._base_path;
   }
 
   get(profileId) {
+    // Return the profile with the specified ID if it exists
     return this.getProfiles()
              .then((registry) => registry[profileId])
              .then((profile) => this._loadProfile(profile));
