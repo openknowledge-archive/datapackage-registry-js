@@ -154,6 +154,7 @@ var Registry = function () {
 }();
 
 exports.default = Registry;
+module.exports = exports['default'];
 }).call(this,"/lib")
 },{"./util/is-browser":2,"./util/is-remote-url":3,"./util/read-file-or-url":4,"babel-polyfill":5,"csv-parse":223,"path":204}],2:[function(require,module,exports){
 'use strict';
@@ -164,6 +165,7 @@ Object.defineProperty(exports, "__esModule", {
 var isBrowser = typeof window !== 'undefined';
 
 exports.default = isBrowser;
+module.exports = exports['default'];
 },{}],3:[function(require,module,exports){
 "use strict";
 
@@ -175,6 +177,7 @@ function isRemoteURL(path) {
 }
 
 exports.default = isRemoteURL;
+module.exports = exports['default'];
 },{}],4:[function(require,module,exports){
 'use strict';
 
@@ -235,6 +238,7 @@ function readFileOrURL(pathOrURL) {
 }
 
 exports.default = readFileOrURL;
+module.exports = exports['default'];
 },{"./is-browser":2,"./is-remote-url":3,"fs":194,"isomorphic-fetch":224}],5:[function(require,module,exports){
 (function (global){
 "use strict";
