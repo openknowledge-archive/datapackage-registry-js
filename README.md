@@ -1,7 +1,7 @@
 # Data Package Registry
 
-[![Travis Build Status](https://travis-ci.org/okfn/datapackage-registry-js.svg?branch=master)](https://travis-ci.org/okfn/datapackage-registry-js)
-[![Coveralls](http://img.shields.io/coveralls/okfn/datapackage-registry-js.svg?branch=master)](https://coveralls.io/r/okfn/datapackage-registry-js?branch=master)
+[![Travis Build Status](https://travis-ci.org/frictionlessdata/datapackage-registry-js.svg?branch=master)](https://travis-ci.org/frictionlessdata/datapackage-registry-js)
+[![Coveralls](http://img.shields.io/coveralls/frictionlessdata/datapackage-registry-js.svg?branch=master)](https://coveralls.io/r/frictionlessdata/datapackage-registry-js?branch=master)
 
 JavaScript package for working with a Data Package registry.
 
